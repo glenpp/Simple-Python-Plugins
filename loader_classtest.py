@@ -31,36 +31,36 @@ name = 'plugin_classtest'
 
 
 # Convenience memory display function - run garbage collect and print number of objects
-def collectprint ( stage=None ):
-	gc.collect()	# garbage collect
-	if stage != None:
-		print stage
-		print "\t#objects: %d" % len(gc.get_objects())
-	else:
-		print "number of objects: %d" % len(gc.get_objects())
+def collectprint(stage=None):
+    gc.collect()    # garbage collect
+    if stage != None:
+        print stage
+        print "\t#objects: %d" % len(gc.get_objects())
+    else:
+        print "number of objects: %d" % len(gc.get_objects())
 
 
 # load module
-collectprint( 'Before Loading' )
-info = imp.find_module ( name )	# search path optional and includes prefix, return (file, pathname, description)
-plugin = imp.load_module ( name, *info )	# returns object
-collectprint( 'Module Loaded' )
+collectprint('Before Loading')
+info = imp.find_module(name)    # search path optional and includes prefix, return (file, pathname, description)
+plugin = imp.load_module(name, *info)    # returns object
+collectprint('Module Loaded')
 
 # use class
-obj = plugin.plugintest ()	# gets object for plugintest
-collectprint( 'Object Instance' )
+obj = plugin.plugintest()    # gets object for plugintest
+collectprint('Object Instance')
 del info
 del plugin
-collectprint( 'Cleaned up module vars' )
+collectprint('Cleaned up module vars')
 
 # run method
 obj.test ()
-collectprint( 'After test() method run' )
+collectprint('After test() method run')
 
 # unload
 del obj
-collectprint( 'Destroyed object' )
-sys.modules.pop ( name )
-collectprint( 'Removed module' )
+collectprint('Destroyed object')
+sys.modules.pop(name)
+collectprint('Removed module')
 
 

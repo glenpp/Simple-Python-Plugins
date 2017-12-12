@@ -21,11 +21,11 @@
 #
 
 
-class plugintest:	# this could be inherited
-	def __init__ ( self ):
-		print "Plugin: __init__()"
-	def test ( self ):
-		print "Plugin: test()"
+class plugintest:    # this could be inherited
+    def __init__(self):
+        print "Plugin: __init__()"
+    def test(self):
+        print "Plugin: test()"
 
 
 

@@ -31,34 +31,34 @@ name = 'plugin_functiontest'
 
 
 # Convenience memory display function - run garbage collect and print number of objects
-def collectprint ( stage=None ):
-	gc.collect()	# garbage collect
-	if stage != None:
-		print stage
-		print "\t#objects: %d" % len(gc.get_objects())
-	else:
-		print "number of objects: %d" % len(gc.get_objects())
+def collectprint(stage=None):
+    gc.collect()    # garbage collect
+    if stage != None:
+        print stage
+        print "\t#objects: %d" % len(gc.get_objects())
+    else:
+        print "number of objects: %d" % len(gc.get_objects())
 
 
 # load module
-collectprint( 'Before Loading' )
-info = imp.find_module ( name )	# search path optional and includes prefix, return (file, pathname, description)
-plugin = imp.load_module ( name, *info )	# returns object
-collectprint( 'Module Loaded' )
+collectprint('Before Loading')
+info = imp.find_module(name)    # search path optional and includes prefix, return (file, pathname, description)
+plugin = imp.load_module(name, *info)    # returns object
+collectprint('Module Loaded')
 
 # cleanup
 del info
-collectprint( 'Cleaned up module vars' )
+collectprint('Cleaned up module vars')
 
 # run function
 print plugin.variable
-plugin.test ()
-collectprint( 'After test() function run' )
+plugin.test()
+collectprint('After test() function run')
 
 # unload
 del plugin
-collectprint( 'Cleaned up module vars' )
-sys.modules.pop ( name )
-collectprint( 'Removed module' )
+collectprint('Cleaned up module vars')
+sys.modules.pop(name)
+collectprint('Removed module')
 
 

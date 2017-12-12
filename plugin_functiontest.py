@@ -23,8 +23,8 @@
 
 variable = 'This is a variable in the Plugin'
 
-def test ():
-	print "Plugin: test()"
+def test():
+    print "Plugin: test()"
 
 
 
